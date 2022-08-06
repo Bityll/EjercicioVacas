@@ -26,7 +26,7 @@ export const recibirvacas = async (message) => {
                     console.clear();
                     return 'Ingrese un valor numerico';
                 }
-                if (value < 0 || value > 50) {
+                if (value < 3 || value > 50) {
                     return 'Ingrese un valor dentro del rango ';
                 }
                 return true;
