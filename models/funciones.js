@@ -26,7 +26,7 @@ export const recibirvacas = async (message) => {
                     console.clear();
                     return 'Ingrese un valor numerico';
                 }
-                if (value < 3 || value > 50) {
+                if (value < 2 || value > 50) {
                     return 'Ingrese un valor dentro del rango ';
                 }
                 return true;
@@ -116,27 +116,16 @@ export const litrosAlDia = (dias) => {
 }
 //Función para calcular la vaca que más Leche produce en el día
 export const vacaMayor = (dias) => {
-    let diasvacas = Array();
-    let vacaMayor = Array();
     for (let k = 0; k < dias.length; k++) {
-        vacaMayor = [];
+        var mayorProduccionDia = 0 ;
+        var VacaMayorProduccion = 0;
         for (let i = 0; i < dias[k].vacas.length; i++) {
-            if (i == 0) {
-                vacaMayor[i] = dias[k].vacas[i]
-            }
-            if (i >= 1) {
-                if (parseInt(vacaMayor[i - 1].litros) < parseInt(dias[k].vacas[i].litros)) {
-                    vacaMayor[i - 1] = dias[k].vacas[i]
-                }
-            }
-            if (i == dias[k].vacas.length - 1) {
-                diasvacas[k] = {
-                    "dia": k + 1, 'vacaMayor': vacaMayor
-                }
+            if (dias[k].vacas[i].litros > mayorProduccionDia) {
+                mayorProduccionDia = dias[k].vacas[i].litros
+                VacaMayorProduccion = i + 1
             }
         }
+        console.log("Para el" ,{dia: k+1}, "La : ",{VacaMayorProduccion}, "Con : " , {mayorProduccionDia});
     }
-    for (let m = 0; m < diasvacas.length; m++) {
-        console.log("La vaca con mayor produción del día fue: ", diasvacas[m]);
-    }
+
 }
